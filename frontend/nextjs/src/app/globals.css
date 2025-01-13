@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%; /* Light off-white */
+    --foreground: 220 28% 12%; /* Neutral dark gray */
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 220 28% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 28% 12%;
+    --primary: 240 80% 55%; /* Vibrant blue */
+    --primary-foreground: 0 0% 100%; /* Pure white */
+    --secondary: 240 15% 90%; /* Soft blue-gray */
+    --secondary-foreground: 240 28% 12%;
+    --muted: 240 10% 95%; /* Muted light gray */
+    --muted-foreground: 220 20% 40%;
+    --accent: 340 65% 65%; /* Soft pink */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%; /* Bright red */
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 12% 85%; /* Light gray */
+    --input: 220 12% 85%; /* Light gray */
+    --ring: 240 70% 50%; /* Bright blue */
+    --radius: 0.375rem; /* Slightly rounded corners */
+  }
+
+  .dark {
+    --background: 220 15% 12%;
+    --foreground: 0 0% 98%;
+    --card: 220 20% 14%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 20% 14%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 220 80% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 40% 80%;
+    --accent: 340 65% 55%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 240 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-all duration-300;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  a {
+    @apply text-primary hover:underline hover:text-primary-foreground;
+  }
+  button {
+    @apply bg-primary text-primary-foreground rounded-lg px-6 py-2 shadow-md hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-ring;
+  }
+  .button-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-lg px-6 py-2 hover:bg-opacity-80 focus:ring-2 focus:ring-ring;
+  }
+  input {
+    @apply bg-input border border-border rounded-md px-4 py-2 text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-ring focus:outline-none;
+  }
+  .card {
+    @apply bg-card text-card-foreground rounded-lg shadow-lg p-6;
+  }
+  .stats {
+    @apply flex flex-wrap justify-between items-center bg-secondary text-secondary-foreground px-6 py-4 rounded-lg shadow-sm;
+  }
+  .table {
+    @apply w-full border-collapse bg-card rounded-lg shadow-md text-sm text-foreground;
+  }
+  .table th, .table td {
+    @apply border border-border px-4 py-2 text-center;
+  }
+  .table th {
+    @apply bg-muted text-muted-foreground font-semibold;
+  }
+  .filter-bar {
+    @apply flex items-center gap-4 bg-muted px-4 py-2 rounded-md shadow-inner;
+  }
+}

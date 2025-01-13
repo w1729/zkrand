@@ -1,0 +1,45 @@
+type OperatorRegistered @entity(immutable: true) {
+  id: Bytes!
+  operatorPublicKey: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RandomnessFulfilled @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  operatorPublicKey: Bytes! # bytes32
+  requester: Bytes! # address
+  nonce: BigInt! # uint256
+  randomness: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RandomnessRequested @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt! # uint256
+  operatorPublicKey: Bytes! # bytes32
+  requester: Bytes! # address
+  minBlockConfirmations: Int! # uint16
+  callbackGasLimit: BigInt! # uint32
+  nonce: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Request @entity {
+  id: String!
+  operator: Operator!
+  request: RandomnessRequested!
+  fulfillment: RandomnessFulfilled
+}
+
+type Operator @entity(immutable: true) {
+  id: Bytes!
+  registration: OperatorRegistered!
+  requests: [Request!]! @derivedFrom(field: "operator")
+}

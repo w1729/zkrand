@@ -1,0 +1,30 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ZKRANDOM
+    network: Ancient8
+    source:
+      address: '0xF12977Ff3F3260C36774ae47bd85Ca08D4878533'
+      abi: ZKVRF
+      startBlock: 16039428
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OperatorRegistered
+        - RandomnessFulfilled
+        - RandomnessRequested
+      abis:
+        - name: ZKVRF
+          file: ./abis/ZKRANDOM.json
+      eventHandlers:
+        - event: OperatorRegistered(indexed bytes32)
+          handler: handleOperatorRegistered
+        - event: RandomnessFulfilled(indexed uint256,indexed bytes32,indexed address,uint256,uint256)
+          handler: handleRandomnessFulfilled
+        - event: RandomnessRequested(indexed uint256,indexed bytes32,indexed address,uint16,uint32,uint256)
+          handler: handleRandomnessRequested
+      file: ./src/zkrandom.ts
