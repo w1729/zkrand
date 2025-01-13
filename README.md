@@ -15,7 +15,7 @@ A verifiable random number generation system for Citrea chain using zero-knowled
 ## Overview
 
 
-ZKRand is a specialized deterministic public-key cryptographic system that leverages zk-SNARK technology through Noir to provide verifiable random numbers. The system is designed to serve decentralized applications on the Citrea chain, particularly for use cases such as:
+ZKRand is a specialized deterministic public-key cryptographic system that leverages zk-SNARK technology through Circom to provide verifiable random numbers. The system is designed to serve decentralized applications on the Citrea chain, particularly for use cases such as:
 
 - NFT minting
 - Lotteries
